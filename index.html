@@ -1,0 +1,2076 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <title>Marc Crusellas</title>
+    <meta name="description"
+        content="Marc Crusellas — software developer. Engineering work: APIs, tooling, and product surfaces." />
+    <meta name="author" content="Marc Crusellas" />
+    <link rel="canonical" href="https://marccrusellas.github.io/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Marc Crusellas" />
+    <meta property="og:description" content="Engineering work: APIs, tooling, and product surfaces." />
+    <meta property="og:url" content="https://marccrusellas.github.io/" />
+    <meta property="og:image" content="https://github.com/MarcCrusellas.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Marc Crusellas" />
+    <meta name="twitter:description" content="Engineering work: APIs, tooling, and product surfaces." />
+    <meta name="twitter:image" content="https://github.com/MarcCrusellas.png" />
+
+    <meta name="robots"
+        content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1,noai,noimageai" />
+    <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0c0b14" media="(prefers-color-scheme: dark)" />
+
+    <link rel="icon" href="https://github.com/MarcCrusellas.png" />
+    <link rel="me" href="https://github.com/MarcCrusellas" />
+    <link rel="me" id="meLinkedIn" href="https://www.linkedin.com/in/marccrusellas" />
+
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://github.com https://avatars.githubusercontent.com; connect-src 'self' https://api.github.com https://raw.githubusercontent.com" />
+
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Marc Crusellas",
+    "url": "https://marccrusellas.github.io/",
+    "image": "https://github.com/MarcCrusellas.png",
+    "email": "mailto:marcrumag@gmail.com",
+    "sameAs": [
+      "https://github.com/MarcCrusellas"
+    ]
+  }
+  </script>
+    <!-- You don’t have to keep searching for clues: yep, this page is AI-made. I’m focusing on other projects right now, and when I design stuff by hand I can spend 3 hours just tweaking border-radius… so trust me, this is way better (for now). -->
+
+    <style>
+        :root {
+            --red: #e22428;
+
+            --bg1: #0088b1;
+            --bg2: #7f5e7c;
+            --bg3: #ae895c;
+            --art1: #0088b1;
+            --art2: #7f5e7c;
+
+            --radius: 18px;
+            --radius-lg: 26px;
+            --shadow: 0 16px 50px rgba(15, 13, 25, .18);
+            --shadow-2: 0 10px 26px rgba(15, 13, 25, .14);
+            --border: 1px solid rgba(25, 24, 47, .14);
+            --max: 1100px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --paper: #0c0b14;
+                --paper-2: #121022;
+                --ink: #f4f1ea;
+                --border: 1px solid rgba(232, 232, 223, .12);
+                --shadow: 0 20px 70px rgba(0, 0, 0, .35);
+                --shadow-2: 0 14px 34px rgba(0, 0, 0, .28);
+            }
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            letter-spacing: .2px;
+            overflow-x: hidden;
+            color: var(--ink);
+            background: linear-gradient(180deg, var(--paper) 0%, var(--paper-2) 100%);
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: -28vh -22vw;
+            z-index: -1;
+            pointer-events: none;
+            background:
+                radial-gradient(900px 520px at 12% 10%, color-mix(in srgb, var(--bg1) 26%, transparent), transparent 62%),
+                radial-gradient(980px 600px at 86% 18%, color-mix(in srgb, var(--bg2) 26%, transparent), transparent 60%),
+                radial-gradient(860px 520px at 62% 92%, color-mix(in srgb, var(--bg3) 22%, transparent), transparent 60%);
+            filter: saturate(1.02);
+            opacity: .92;
+            transform: translateZ(0);
+            transition: opacity .55s ease, filter .8s ease;
+        }
+
+        html[data-theme="ink"] body::before {
+            background:
+                radial-gradient(900px 520px at 18% 8%, color-mix(in srgb, var(--bg1) 34%, transparent), transparent 62%),
+                radial-gradient(980px 600px at 82% 22%, color-mix(in srgb, var(--bg2) 30%, transparent), transparent 62%),
+                radial-gradient(860px 520px at 56% 92%, color-mix(in srgb, var(--bg3) 26%, transparent), transparent 64%),
+                radial-gradient(520px 360px at 52% 46%, rgba(0, 0, 0, .26), transparent 68%);
+            opacity: .95;
+            filter: saturate(1.08);
+        }
+
+        html[data-theme="midnight"] body::before {
+            background:
+                radial-gradient(1050px 680px at 10% 8%, color-mix(in srgb, var(--bg1) 34%, transparent), transparent 62%),
+                radial-gradient(920px 620px at 92% 12%, color-mix(in srgb, var(--bg2) 32%, transparent), transparent 60%),
+                conic-gradient(from 210deg at 64% 72%, color-mix(in srgb, var(--bg3) 14%, transparent), transparent 58%, color-mix(in srgb, var(--bg1) 12%, transparent));
+            opacity: .93;
+            filter: saturate(1.1);
+        }
+
+        html[data-theme="gildedNight"] body::before {
+            background:
+                radial-gradient(980px 640px at 16% 14%, rgba(222, 161, 1, .24), transparent 62%),
+                radial-gradient(860px 560px at 86% 22%, color-mix(in srgb, var(--bg2) 34%, transparent), transparent 62%),
+                radial-gradient(760px 520px at 60% 92%, color-mix(in srgb, var(--bg3) 28%, transparent), transparent 64%),
+                conic-gradient(from 240deg at 58% 58%, rgba(222, 161, 1, .10), transparent 62%, rgba(95, 208, 211, .10));
+            opacity: .96;
+            filter: saturate(1.18) contrast(1.05);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid rgba(0, 136, 177, .35);
+            outline-offset: 3px;
+            border-radius: 12px;
+        }
+
+        .wrap {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 24px 18px 70px
+        }
+
+        .grain {
+            pointer-events: none;
+            position: fixed;
+            inset: -40px;
+            opacity: .08;
+            mix-blend-mode: multiply;
+            background-image:
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+            background-size: 240px 240px;
+            z-index: 0;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .grain {
+                opacity: .10;
+                mix-blend-mode: screen;
+            }
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            background: color-mix(in srgb, var(--paper) 82%, transparent);
+            border-bottom: var(--border);
+        }
+
+        .topbar {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 220px;
+        }
+
+        .avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 16px;
+            border: 1px solid rgba(25, 24, 47, .14);
+            box-shadow: var(--shadow-2);
+            background: linear-gradient(135deg, rgba(226, 36, 40, .95) 0 22%, transparent 22% 100%),
+                linear-gradient(135deg, rgba(0, 136, 177, .95) 0 55%, transparent 55% 100%),
+                linear-gradient(135deg, rgba(127, 94, 124, .95) 0 100%);
+            overflow: hidden;
+            flex: 0 0 auto;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block
+        }
+
+        .brand .name {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.05;
+            min-width: 0;
+        }
+
+        .brand strong {
+            font-weight: 820;
+            letter-spacing: .3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 260px;
+        }
+
+        .brand span {
+            font-size: 12px;
+            color: color-mix(in srgb, var(--ink) 70%, var(--slate));
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 320px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .pill {
+            padding: 10px 12px;
+            border-radius: 999px;
+            border: var(--border);
+            background: color-mix(in srgb, var(--paper) 88%, transparent);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, .24) inset;
+            transition: transform .18s ease, box-shadow .18s ease, background .6s ease, border-color .6s ease, color .6s ease;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            line-height: 1;
+            min-height: 38px;
+        }
+
+        .pill:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 22px rgba(15, 13, 25, .12);
+            background: color-mix(in srgb, var(--paper) 75%, rgba(127, 94, 124, .08));
+        }
+
+        .pill.primary {
+            border-color: color-mix(in srgb, var(--accent) 55%, rgba(25, 24, 47, .14));
+            background:
+                radial-gradient(700px 140px at 20% 0%, rgba(0, 136, 177, .22), transparent 60%),
+                color-mix(in srgb, var(--paper) 82%, rgba(0, 136, 177, .08));
+        }
+
+        .hero {
+            position: relative;
+            z-index: 1;
+            padding: 30px 0 8px;
+        }
+
+        .heroGrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            align-items: stretch;
+        }
+
+        @media (max-width: 920px) {
+            .heroGrid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                justify-content: flex-start;
+            }
+
+            .brand {
+                min-width: auto;
+            }
+        }
+
+        .panel {
+            border: var(--border);
+            background:
+                radial-gradient(900px 380px at 18% 0%, rgba(127, 94, 124, .18), transparent 60%),
+                radial-gradient(700px 420px at 100% 20%, rgba(0, 136, 177, .14), transparent 55%),
+                linear-gradient(180deg, color-mix(in srgb, var(--paper) 92%, transparent), var(--paper));
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .panel .inner {
+            padding: 26px
+        }
+
+        h1 {
+            margin: 0 0 12px;
+            font-weight: 900;
+            letter-spacing: -0.8px;
+            font-size: clamp(38px, 5vw, 56px);
+            line-height: 1.02;
+            font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+        }
+
+        .sub {
+            margin: 0;
+            color: color-mix(in srgb, var(--ink) 75%, var(--slate));
+            font-size: 15px;
+            line-height: 1.55;
+            max-width: 60ch;
+        }
+
+        .ctaRow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .metaRow {
+            margin-top: 18px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            color: color-mix(in srgb, var(--ink) 70%, var(--slate));
+            font-size: 13px;
+        }
+
+        .metaTag {
+            padding: 8px 10px;
+            border-radius: 999px;
+            border: var(--border);
+            background: color-mix(in srgb, var(--paper) 86%, transparent);
+        }
+
+        section {
+            position: relative;
+            z-index: 1;
+            margin-top: 18px;
+        }
+
+        .sectionHead {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 12px;
+            margin: 28px 0 12px;
+        }
+
+        .sectionHead h2 {
+            margin: 0;
+            font-size: 15px;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: color-mix(in srgb, var(--ink) 70%, var(--slate));
+        }
+
+        .sectionHead .lead {
+            font-size: 13px;
+            color: color-mix(in srgb, var(--ink) 60%, var(--slate));
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+
+        .card {
+            grid-column: span 4;
+            border-radius: var(--radius-lg);
+            border: var(--border);
+            background: color-mix(in srgb, var(--paper) 90%, transparent);
+            box-shadow: var(--shadow-2);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 240px;
+            transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 46px rgba(15, 13, 25, .18);
+            border-color: color-mix(in srgb, var(--violet) 30%, rgba(25, 24, 47, .14));
+        }
+
+        .card .cover {
+            height: 120px;
+            position: relative;
+            background:
+                radial-gradient(700px 240px at 18% 10%,
+                    color-mix(in srgb, var(--art1) 22%, transparent),
+                    transparent 55%),
+                radial-gradient(700px 260px at 92% 30%,
+                    color-mix(in srgb, var(--art2) 18%, transparent),
+                    transparent 55%),
+                linear-gradient(180deg,
+                    color-mix(in srgb, var(--paper) 90%, transparent),
+                    var(--paper));
+        }
+
+        .card:nth-child(2) .cover {
+            background:
+                radial-gradient(700px 240px at 20% 0%,
+                    color-mix(in srgb, var(--art1) 18%, transparent),
+                    transparent 55%),
+                radial-gradient(700px 260px at 96% 30%,
+                    color-mix(in srgb, var(--accent) 18%, transparent),
+                    transparent 55%),
+                repeating-linear-gradient(90deg,
+                    color-mix(in srgb, var(--accent) 10%, transparent) 0 1px,
+                    transparent 1px 18px),
+                linear-gradient(180deg,
+                    color-mix(in srgb, var(--paper) 90%, transparent),
+                    var(--paper));
+        }
+
+        .card:nth-child(3) .cover {
+            background:
+                radial-gradient(700px 240px at 18% 10%,
+                    color-mix(in srgb, var(--art2) 22%, transparent),
+                    transparent 55%),
+                radial-gradient(700px 260px at 92% 30%,
+                    color-mix(in srgb, var(--art1) 18%, transparent),
+                    transparent 55%),
+                radial-gradient(700px 260px at 60% 120%,
+                    color-mix(in srgb, var(--accent) 14%, transparent),
+                    transparent 55%),
+                linear-gradient(180deg,
+                    color-mix(in srgb, var(--paper) 90%, transparent),
+                    var(--paper));
+        }
+
+        .badge {
+            position: absolute;
+            left: 14px;
+            top: 14px;
+            padding: 8px 10px;
+            border-radius: 999px;
+            border: var(--border);
+            background: color-mix(in srgb, var(--paper) 86%, transparent);
+            font-size: 12px;
+            letter-spacing: .7px;
+            text-transform: uppercase;
+            color: color-mix(in srgb, var(--ink) 78%, var(--slate));
+        }
+
+        .card .body {
+            padding: 16px
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+            font-size: 18px;
+            letter-spacing: -0.2px;
+            font-weight: 860;
+        }
+
+        .card p {
+            margin: 0;
+            color: color-mix(in srgb, var(--ink) 70%, var(--slate));
+            font-size: 14px;
+            line-height: 1.55;
+            min-height: 44px;
+        }
+
+        .card .foot {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 14px 16px 16px;
+            border-top: var(--border);
+            color: color-mix(in srgb, var(--ink) 70%, var(--slate));
+            font-size: 13px;
+        }
+
+        .arrow {
+            width: 26px;
+            height: 26px;
+            border-radius: 10px;
+            border: var(--border);
+            display: grid;
+            place-items: center;
+            background: color-mix(in srgb, var(--paper) 86%, transparent);
+        }
+
+        @media (max-width: 980px) {
+            .card {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                grid-column: span 12;
+            }
+        }
+
+        footer {
+            margin-top: 26px;
+            padding-top: 18px;
+            border-top: var(--border);
+            color: color-mix(in srgb, var(--ink) 62%, var(--slate));
+            font-size: 13px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center
+        }
+
+        .themeMenu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .themeMenu.docked {
+            position: fixed;
+            right: max(18px, calc((100vw - var(--wrap-max, 1120px))/2 + 18px));
+            bottom: max(0px, env(safe-area-inset-bottom));
+            z-index: 60;
+        }
+
+        .themeMenu.docked .themeSummary {
+            border-radius: 18px 18px 0 0;
+        }
+
+        .themeSummary {
+            list-style: none;
+            padding: 8px 10px;
+            border-radius: 999px;
+            border: var(--border);
+            background: color-mix(in srgb, var(--paper) 86%, transparent);
+            transition: transform .18s ease, box-shadow .18s ease, background .6s ease, border-color .6s ease, color .6s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            line-height: 1;
+            min-height: 34px;
+            cursor: pointer;
+            color: color-mix(in srgb, var(--ink) 78%, var(--slate));
+            user-select: none;
+        }
+
+        .themeMenu[open] .themeSummary {
+            box-shadow: 0 14px 34px rgba(15, 13, 25, .18);
+            border-color: color-mix(in srgb, var(--accent) 45%, rgba(25, 24, 47, .14));
+        }
+
+        .themeSummary::-webkit-details-marker {
+            display: none
+        }
+
+        .themePopover {
+            position: absolute;
+            right: 0;
+            bottom: calc(100% + 10px);
+            width: min(320px, calc(100vw - 36px));
+            max-height: 270px;
+            overflow: auto;
+            border-radius: 28px;
+            border: var(--border);
+            background: color-mix(in srgb, var(--paper) 86%, transparent);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 26px 78px rgba(15, 13, 25, .22);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transform-origin: 85% 100%;
+            z-index: 20;
+            opacity: 0;
+            transform: translateY(8px) scale(.985);
+            transition: opacity .14s ease-out, transform .14s ease-out;
+        }
+
+        .themeMenu[open] .themePopover {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .themeMenu.closing .themePopover {
+            opacity: 0;
+            transform: translateY(8px) scale(.985);
+        }
+
+        @keyframes pop {
+            from {
+                opacity: 0;
+                transform: translateY(8px) scale(.98)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1)
+            }
+        }
+
+        .themeSection {
+            border-radius: 18px;
+            border: var(--border);
+            background: color-mix(in srgb, var(--paper) 88%, transparent);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .themeSectionTitle {
+            font-size: 12px;
+            letter-spacing: .9px;
+            text-transform: uppercase;
+            color: color-mix(in srgb, var(--ink) 62%, var(--slate));
+            padding: 2px 4px 6px;
+        }
+
+        .themeOption {
+            border: var(--border);
+            background: color-mix(in srgb, var(--paper) 88%, transparent);
+            border-radius: 14px;
+            padding: 10px 12px;
+            cursor: pointer;
+            font: inherit;
+            color: color-mix(in srgb, var(--ink) 78%, var(--slate));
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            line-height: 1;
+            transition: transform .16s ease, box-shadow .16s ease, background .6s ease, border-color .6s ease, color .6s ease;
+        }
+
+        .themeOption:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 24px rgba(15, 13, 25, .16);
+            background: color-mix(in srgb, var(--paper) 80%, rgba(127, 94, 124, .06));
+        }
+
+        .themeOption[aria-pressed="true"] {
+            border-color: color-mix(in srgb, var(--accent) 55%, rgba(25, 24, 47, .14));
+            color: color-mix(in srgb, var(--ink) 88%, var(--accent));
+            background:
+                radial-gradient(700px 140px at 20% 0%, rgba(0, 136, 177, .18), transparent 60%),
+                color-mix(in srgb, var(--paper) 84%, rgba(0, 136, 177, .06));
+        }
+
+        .optSw {
+            width: 14px;
+            height: 14px;
+            border-radius: 6px;
+            border: 1px solid rgba(25, 24, 47, .12);
+            box-shadow: 0 1px 0 rgba(255, 255, 255, .18) inset;
+            flex: 0 0 auto;
+        }
+
+        .links a {
+            padding: 8px 10px;
+            border-radius: 999px;
+            border: var(--border);
+            background: color-mix(in srgb, var(--paper) 86%, transparent);
+            transition: transform .18s ease, box-shadow .18s ease, background .6s ease, border-color .6s ease, color .6s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            min-height: 34px;
+        }
+
+        .links a:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 22px rgba(15, 13, 25, .12);
+        }
+
+        .tileCard {
+            border-radius: var(--radius-lg);
+            border: var(--border);
+            background:
+                radial-gradient(900px 340px at 16% 10%,
+                    color-mix(in srgb, var(--art1) 18%, transparent),
+                    transparent 55%),
+                radial-gradient(900px 340px at 92% 34%,
+                    color-mix(in srgb, var(--art2) 16%, transparent),
+                    transparent 55%),
+                repeating-linear-gradient(90deg,
+                    color-mix(in srgb, var(--accent) 10%, transparent) 0 1px,
+                    transparent 1px 18px),
+                linear-gradient(180deg,
+                    color-mix(in srgb, var(--paper) 92%, transparent),
+                    var(--paper));
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            display: grid;
+            min-height: 260px;
+        }
+
+        .tileCardInner {
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .tileTitle {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .tileLabel {
+            font-size: 12px;
+            letter-spacing: .9px;
+            text-transform: uppercase;
+            color: color-mix(in srgb, var(--ink) 68%, var(--slate));
+        }
+
+        .microSw {
+            display: flex;
+            gap: 8px;
+            align-items: center
+        }
+
+        .sw {
+            width: 12px;
+            height: 12px;
+            border-radius: 4px;
+            border: 1px solid rgba(25, 24, 47, .12)
+        }
+
+        .sw.v1 {
+            background: var(--violet)
+        }
+
+        .sw.v2 {
+            background: var(--plum)
+        }
+
+        .sw.v3 {
+            background: var(--accent)
+        }
+
+        .sw.v4 {
+            background: var(--gold)
+        }
+
+        .sw.v5 {
+            background: var(--red)
+        }
+
+        .tileName {
+            font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+            font-weight: 900;
+            font-size: 30px;
+            letter-spacing: -0.5px;
+            line-height: 1.06;
+        }
+
+        .tileBio {
+            margin: 0;
+            color: color-mix(in srgb, var(--ink) 74%, var(--slate));
+            font-size: 14px;
+            line-height: 1.55;
+            max-width: 52ch;
+        }
+
+        @media (max-width: 520px) {
+            .actionRow {
+                flex-wrap: wrap;
+            }
+        }
+
+        .md {
+            color: color-mix(in srgb, var(--ink) 78%, var(--slate));
+            font-size: 14px;
+            line-height: 1.65;
+            width: 100%;
+            max-width: none;
+        }
+
+        .md .w {
+            display: inline-block;
+            transition: color 1.05s cubic-bezier(.2, .9, .2, 1);
+            transition-delay: 0s;
+        }
+
+        .themeChanging .md .w {
+            will-change: color;
+        }
+
+        .md a {
+            border-bottom: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+            color: var(--accent);
+            padding-bottom: 1px;
+            text-decoration: none;
+        }
+
+        .md a:hover {
+            border-bottom-color: color-mix(in srgb, var(--accent) 75%, transparent)
+        }
+
+        .md h1,
+        .md h2,
+        .md h3 {
+            color: var(--ink);
+            font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+            letter-spacing: -0.2px;
+            margin: 18px 0 10px;
+            line-height: 1.15;
+        }
+
+        .md h1 {
+            font-size: 26px
+        }
+
+        .md h2 {
+            font-size: 20px
+        }
+
+        .md h3 {
+            font-size: 16px
+        }
+
+        .md p {
+            margin: 10px 0
+        }
+
+        .md ul,
+        .md ol {
+            margin: 10px 0 10px 18px;
+            padding: 0
+        }
+
+        .md li {
+            margin: 6px 0
+        }
+
+        .md pre {
+            margin: 12px 0;
+            padding: 14px 14px;
+            border-radius: 16px;
+            border: var(--border);
+            background: color-mix(in srgb, var(--paper) 86%, transparent);
+            overflow: auto;
+            box-shadow: 0 10px 26px rgba(15, 13, 25, .10);
+        }
+
+        .md code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            font-size: 12.5px;
+            color: color-mix(in srgb, var(--ink) 88%, var(--plum));
+        }
+
+        .md blockquote {
+            margin: 12px 0;
+            padding: 10px 14px;
+            border-left: 3px solid color-mix(in srgb, var(--accent) 45%, transparent);
+            background: color-mix(in srgb, var(--paper) 88%, transparent);
+            border-radius: 14px;
+        }
+
+        .md hr {
+            border: 0;
+            border-top: var(--border);
+            margin: 16px 0
+        }
+
+        .md img {
+            max-width: 100%;
+            border-radius: 18px;
+            border: var(--border);
+            box-shadow: var(--shadow-2);
+            margin: 12px 0;
+        }
+
+        .tileGallery {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 16px;
+        }
+
+        .tileArt {
+            grid-column: span 4;
+            border-radius: var(--radius-lg);
+            border: 0;
+            box-shadow: 0 22px 60px rgba(15, 13, 25, .14);
+            background: color-mix(in srgb, var(--paper) 70%, transparent);
+            min-height: 220px;
+            position: relative;
+            overflow: hidden;
+            transition: transform .18s ease, box-shadow .18s ease;
+        }
+
+        .tileArt:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 28px 78px rgba(15, 13, 25, .18);
+        }
+
+        .tileArt::after {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            background:
+                radial-gradient(900px 340px at 20% 0%, rgba(255, 255, 255, .28), transparent 60%),
+                radial-gradient(700px 340px at 100% 40%, rgba(255, 255, 255, .14), transparent 60%);
+            opacity: .55;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .tileArt::after {
+                background:
+                    radial-gradient(900px 340px at 20% 0%, rgba(255, 255, 255, .14), transparent 60%),
+                    radial-gradient(700px 340px at 100% 40%, rgba(255, 255, 255, .08), transparent 60%);
+                opacity: .65;
+                mix-blend-mode: screen;
+            }
+        }
+
+        .tileArt--palette {
+            background:
+                linear-gradient(135deg, rgba(226, 36, 40, .92) 0 26%, transparent 26% 100%),
+                linear-gradient(135deg, rgba(0, 136, 177, .92) 0 56%, transparent 56% 100%),
+                linear-gradient(135deg, rgba(127, 94, 124, .92) 0 100%),
+                color-mix(in srgb, var(--paper) 78%, transparent);
+        }
+
+        .tileArt--grid {
+            background:
+                linear-gradient(90deg, color-mix(in srgb, var(--art1) 26%, transparent) 1px, transparent 1px) 0 0 / 22px 22px,
+                linear-gradient(0deg, color-mix(in srgb, var(--art2) 22%, transparent) 1px, transparent 1px) 0 0 / 22px 22px,
+                linear-gradient(135deg, color-mix(in srgb, var(--accent) 10%, transparent), transparent 62%),
+                radial-gradient(520px 260px at 40% 30%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 70%);
+            filter: saturate(1.06);
+        }
+
+        html[data-theme="gildedNight"] .tileArt--grid {
+            background:
+                linear-gradient(90deg, rgba(222, 161, 1, .28) 1px, transparent 1px) 0 0 / 20px 20px,
+                linear-gradient(0deg, color-mix(in srgb, var(--art2) 26%, transparent) 1px, transparent 1px) 0 0 / 20px 20px,
+                radial-gradient(520px 260px at 34% 26%, rgba(222, 161, 1, .16), transparent 68%),
+                radial-gradient(520px 320px at 72% 76%, rgba(95, 208, 211, .14), transparent 70%);
+            filter: saturate(1.2) contrast(1.05);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .tileArt--grid {
+                background:
+                    radial-gradient(900px 320px at 30% 0%, rgba(127, 94, 124, .18), transparent 60%),
+                    repeating-linear-gradient(90deg, rgba(232, 232, 223, .10) 0 1px, transparent 1px 18px),
+                    repeating-linear-gradient(0deg, rgba(232, 232, 223, .08) 0 1px, transparent 1px 18px),
+                    color-mix(in srgb, var(--paper) 74%, transparent);
+            }
+        }
+
+        .tileArt--circle {
+            background:
+                radial-gradient(circle at 38% 45%,
+                    rgba(0, 0, 0, 0) 0 26%,
+                    color-mix(in srgb, var(--art1) 34%, transparent) 27% 28%,
+                    transparent 29% 100%),
+                radial-gradient(circle at 64% 62%,
+                    rgba(0, 0, 0, 0) 0 22%,
+                    color-mix(in srgb, var(--art2) 30%, transparent) 23% 24%,
+                    transparent 25% 100%),
+                radial-gradient(520px 340px at 52% 52%,
+                    color-mix(in srgb, var(--accent) 10%, transparent),
+                    transparent 72%),
+                linear-gradient(135deg, color-mix(in srgb, var(--paper) 76%, transparent), var(--paper));
+        }
+
+        html[data-theme="gildedNight"] .tileArt--circle {
+            background:
+                radial-gradient(circle at 38% 45%,
+                    rgba(0, 0, 0, 0) 0 26%,
+                    rgba(222, 161, 1, .34) 27% 28%,
+                    transparent 29% 100%),
+                radial-gradient(circle at 64% 62%,
+                    rgba(0, 0, 0, 0) 0 22%,
+                    color-mix(in srgb, var(--art2) 34%, transparent) 23% 24%,
+                    transparent 25% 100%),
+                radial-gradient(520px 340px at 52% 52%,
+                    rgba(222, 161, 1, .14),
+                    transparent 72%),
+                linear-gradient(135deg, color-mix(in srgb, var(--paper) 76%, transparent), var(--paper));
+            filter: saturate(1.18) contrast(1.05);
+        }
+
+
+        @media (max-width: 980px) {
+            .tileArt {
+                grid-column: span 6;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .tileArt {
+                grid-column: span 12;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header>
+        <div class="topbar">
+            <a class="brand" href="#top" aria-label="Home">
+                <span class="avatar" aria-hidden="true">
+                    <img id="avatarImg" alt="" />
+                </span>
+                <span class="name">
+                    <strong id="displayName">Marc Crusellas</strong>
+                    <span id="bioLine">Software Developer</span>
+                </span>
+            </a>
+
+            <nav aria-label="Primary">
+                <a class="pill" href="#projects">Projects</a>
+                <a class="pill" href="#about">About</a>
+                <a class="pill primary" href="/api-integrator/">API Integrator</a>
+                <a class="pill" id="ghNavLink" href="https://github.com/MarcCrusellas" rel="noreferrer noopener"
+                    target="_blank">GitHub</a>
+                <a class="pill" id="liNavLink" href="https://www.linkedin.com/in/marccrusellas"
+                    rel="noreferrer noopener" target="_blank">LinkedIn</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top" class="wrap">
+        <script>
+            document.documentElement.classList.add("tAll");
+        </script>
+        <section class="hero">
+            <div class="heroGrid">
+                <div class="panel">
+                    <div class="inner">
+                        <h1>Builds, refactors, ships.</h1>
+                        <p class="sub">Engineering work: APIs, tooling, and product surfaces.</p>
+
+                        <div class="ctaRow">
+                            <a class="pill primary" href="#projects">View projects</a>
+                            <a class="pill" href="/api-integrator/">Open /api-integrator</a>
+                            <a class="pill" id="ghCtaLink" href="https://github.com/MarcCrusellas"
+                                rel="noreferrer noopener" target="_blank">GitHub profile</a>
+                        </div>
+
+                        <div class="metaRow" aria-label="Highlights">
+                            <span class="metaTag">Java</span>
+                            <span class="metaTag">APIs</span>
+                            <span class="metaTag">Refactoring</span>
+                            <span class="metaTag">Angular</span>
+                            <span class="metaTag">Tooling</span>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="tileCard" id="tileCardLink" href="https://www.linkedin.com/in/marccrusellas"
+                    rel="noreferrer noopener" target="_blank" aria-label="Open LinkedIn profile">
+                    <div class="tileCardInner">
+                        <div class="tileTitle">
+                            <div class="tileLabel">LinkedIn</div>
+                            <div class="microSw" aria-hidden="true">
+                                <span class="sw v1"></span><span class="sw v2"></span><span class="sw v3"></span><span
+                                    class="sw v4"></span><span class="sw v5"></span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="tileName" id="tileName">Marc Crusellas</div>
+                            <p class="tileBio" id="tileBio">Software Developer</p>
+                        </div>
+
+
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section id="projects" aria-label="Projects">
+            <div class="sectionHead">
+                <h2>Projects</h2>
+                <div class="lead">Engineering work: APIs, tooling, and product surfaces.</div>
+            </div>
+
+            <div class="cards" id="projectCards">
+                <a class="card" href="/api-integrator/">
+                    <div class="cover">
+                        <div class="badge">Site</div>
+                    </div>
+                    <div class="body">
+                        <h3>API Integrator</h3>
+                        <p>Angular sub-site at <strong>/api-integrator</strong>.</p>
+                    </div>
+                    <div class="foot"><span>Live</span><span class="arrow">↗</span></div>
+                </a>
+
+                <a class="card" href="https://github.com/MarcCrusellas/marccrusellas.github.io"
+                    rel="noreferrer noopener" target="_blank">
+                    <div class="cover">
+                        <div class="badge">Repo</div>
+                    </div>
+                    <div class="body">
+                        <h3>marccrusellas.github.io</h3>
+                        <p>Landing page source.</p>
+                    </div>
+                    <div class="foot"><span>GitHub</span><span class="arrow">↗</span></div>
+                </a>
+
+                <a class="card" href="https://github.com/MarcCrusellas" rel="noreferrer noopener" target="_blank">
+                    <div class="cover">
+                        <div class="badge">Index</div>
+                    </div>
+                    <div class="body">
+                        <h3>Repository index</h3>
+                        <p>More work on GitHub.</p>
+                    </div>
+                    <div class="foot"><span>GitHub</span><span class="arrow">↗</span></div>
+                </a>
+            </div>
+        </section>
+
+        <section id="about" aria-label="About">
+            <div class="sectionHead">
+                <h2>About</h2>
+                <div class="lead">Background and approach.</div>
+            </div>
+
+            <div class="panel">
+                <div class="inner">
+                    <div class="md" id="aboutMd">
+                        <p style="margin:0">Loading…</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tiles" aria-label="Tiles">
+            <div class="sectionHead">
+                <h2>Visual notes</h2>
+                <div class="lead">A small grid of motifs that can grow over time.</div>
+            </div>
+
+            <div class="tileGallery" aria-label="Tile gallery">
+                <div class="tileArt tileArt--palette" aria-label="Palette tile"></div>
+                <div class="tileArt tileArt--grid" aria-label="Grid tile"></div>
+                <div class="tileArt tileArt--circle" aria-label="Circle tile"></div>
+            </div>
+        </section>
+
+        <footer>
+            <div>© <span id="year"></span> <span id="footerName">Marc Crusellas</span></div>
+
+            <div class="links" aria-label="Links">
+                <a href="/api-integrator/">/api-integrator</a>
+                <a id="footerGitHub" href="https://github.com/MarcCrusellas" rel="noreferrer noopener"
+                    target="_blank">GitHub</a>
+                <a id="footerLinkedIn" href="https://www.linkedin.com/in/marccrusellas" rel="noreferrer noopener"
+                    target="_blank">LinkedIn</a>
+                <a href="mailto:marcrumag@gmail.com">Email</a>
+
+                <details class="themeMenu" id="themeMenu">
+                    <summary class="themeSummary" id="themeSummary" aria-label="Choose theme">
+                        <span class="swSmall" id="themeSwatch" aria-hidden="true" style="background:#f4f1ea"></span>
+                        <span id="themeLabelText">Theme: Paper</span>
+                    </summary>
+
+                    <div class="themePopover" role="menu" aria-label="Theme selector">
+                        <div id="themeOptions"></div>
+                    </div>
+                </details>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        const GH_USER = "MarcCrusellas";
+        const README_OWNER = "MarcCrusellas";
+        const README_REPO = "MarcCrusellas";
+        const README_BRANCH = "main";
+        const README_PATH = "README.md";
+
+        const LF = String.fromCharCode(10);
+        const CR = String.fromCharCode(13);
+
+        const elYear = document.getElementById("year");
+        if (elYear) elYear.textContent = String(new Date().getFullYear());
+
+        document.addEventListener("click", (e) => {
+            const a = e.target.closest("a[href^='#']");
+            if (!a) return;
+            const id = a.getAttribute("href");
+            const el = document.querySelector(id);
+            if (!el) return;
+            e.preventDefault();
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+            history.replaceState(null, "", id);
+        });
+
+        function isExternalHref(href) {
+            try {
+                const u = new URL(href, window.location.href);
+                if (u.protocol !== "http:" && u.protocol !== "https:") return false;
+                return u.origin !== window.location.origin;
+            } catch {
+                return false;
+            }
+        }
+
+        function hardenExternalLink(a) {
+            if (!a) return;
+            const href = a.getAttribute("href") || "";
+            if (!href) return;
+            if (!isExternalHref(href)) return;
+            a.setAttribute("target", "_blank");
+            a.setAttribute("rel", "noreferrer noopener");
+        }
+
+        function escapeHtml(s) {
+            return String(s)
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#39;");
+        }
+
+        function safeUrl(url) {
+            try {
+                const u = new URL(url, window.location.href);
+                if (u.protocol !== "http:" && u.protocol !== "https:") return null;
+                return u.toString();
+            } catch {
+                return null;
+            }
+        }
+
+        async function fetchProfile(user) {
+            const res = await fetch("https://api.github.com/users/" + user, {
+                headers: { "Accept": "application/vnd.github+json" }
+            });
+            if (!res.ok) throw new Error("GitHub API: " + res.status);
+            return res.json();
+        }
+
+        async function fetchReadmeRaw(owner, repo, branch, path) {
+            const url = "https://raw.githubusercontent.com/" + owner + "/" + repo + "/" + branch + "/" + path;
+            const res = await fetch(url, { cache: "no-store" });
+            if (!res.ok) throw new Error("README fetch: " + res.status);
+            return res.text();
+        }
+
+        function applyInline(md) {
+            let out = "";
+            let i = 0;
+
+            while (i < md.length) {
+                if (md[i] === '`') {
+                    const j = md.indexOf('`', i + 1);
+                    if (j !== -1) {
+                        out += "<code>" + escapeHtml(md.slice(i + 1, j)) + "</code>";
+                        i = j + 1;
+                        continue;
+                    }
+                }
+
+                if (md[i] === '!' && md[i + 1] === '[') {
+                    const a = md.indexOf(']', i + 2);
+                    const b = a === -1 ? -1 : md.indexOf('(', a + 1);
+                    const c = b === -1 ? -1 : md.indexOf(')', b + 1);
+                    if (a !== -1 && b !== -1 && c !== -1) {
+                        const alt = md.slice(i + 2, a);
+                        const url = safeUrl(md.slice(b + 1, c).trim());
+                        if (url) out += "<img src=\"" + escapeHtml(url) + "\" alt=\"" + escapeHtml(alt) + "\" loading=\"lazy\" decoding=\"async\" />";
+                        i = c + 1;
+                        continue;
+                    }
+                }
+
+                if (md[i] === '[') {
+                    const a = md.indexOf(']', i + 1);
+                    const b = a === -1 ? -1 : md.indexOf('(', a + 1);
+                    const c = b === -1 ? -1 : md.indexOf(')', b + 1);
+                    if (a !== -1 && b !== -1 && c !== -1) {
+                        const label = md.slice(i + 1, a);
+                        const url = safeUrl(md.slice(b + 1, c).trim());
+                        if (url) out += "<a href=\"" + escapeHtml(url) + "\" rel=\"noreferrer noopener\" target=\"_blank\">" + escapeHtml(label) + "</a>";
+                        else out += escapeHtml(label);
+                        i = c + 1;
+                        continue;
+                    }
+                }
+
+                if (md[i] === '*' && md[i + 1] === '*') {
+                    const j = md.indexOf('**', i + 2);
+                    if (j !== -1) {
+                        out += "<strong>" + escapeHtml(md.slice(i + 2, j)) + "</strong>";
+                        i = j + 2;
+                        continue;
+                    }
+                }
+
+                if (md[i] === '*') {
+                    const j = md.indexOf('*', i + 1);
+                    if (j !== -1) {
+                        out += "<em>" + escapeHtml(md.slice(i + 1, j)) + "</em>";
+                        i = j + 1;
+                        continue;
+                    }
+                }
+
+                out += escapeHtml(md[i]);
+                i++;
+            }
+
+            return out;
+        }
+
+        function renderMarkdown(md) {
+            const raw = String(md ?? "");
+            const text = raw.split(CR + LF).join(LF).split(CR).join(LF);
+            const lines = text.split(LF);
+
+            let html = "";
+            let i = 0;
+
+            const eatBlank = () => {
+                while (i < lines.length && lines[i].trim() === "") i++;
+            };
+
+            const isHr = (t) => {
+                const s = t.trim();
+                if (s.length < 3) return false;
+                let allDash = true;
+                let allStar = true;
+                for (let k = 0; k < s.length; k++) {
+                    const c = s[k];
+                    if (c !== '-') allDash = false;
+                    if (c !== '*') allStar = false;
+                }
+                return allDash || allStar;
+            };
+
+            const isUnordered = (t) => t.startsWith("- ") || t.startsWith("* ") || t.startsWith("+ ");
+
+            const isOrdered = (t) => {
+                const dot = t.indexOf(". ");
+                if (dot <= 0) return false;
+                const n = t.slice(0, dot);
+                return !isNaN(parseInt(n, 10));
+            };
+
+            const renderParagraph = () => {
+                const buf = [];
+                while (i < lines.length) {
+                    const t = lines[i].trim();
+                    if (t === "") break;
+                    if (t.startsWith("```")) break;
+                    if (t.startsWith("#")) break;
+                    if (t.startsWith(">")) break;
+                    if (isHr(t)) break;
+                    if (isUnordered(t)) break;
+                    if (isOrdered(t)) break;
+                    buf.push(t);
+                    i++;
+                }
+
+                if (buf.length === 0) {
+                    i++;
+                    return;
+                }
+
+                const para = buf.join(" ").split("  ").join(" ").trim();
+                if (para) html += "<p>" + applyInline(para) + "</p>";
+            };
+
+            const renderCode = () => {
+                const fence = lines[i].trim();
+                const lang = fence.slice(3).trim();
+                i++;
+                const buf = [];
+                while (i < lines.length && !lines[i].trim().startsWith("```")) {
+                    buf.push(lines[i]);
+                    i++;
+                }
+                if (i < lines.length) i++;
+                const cls = lang ? " class=\"language-" + escapeHtml(lang) + "\"" : "";
+                html += "<pre><code" + cls + ">" + escapeHtml(buf.join(LF)) + "</code></pre>";
+            };
+
+            const renderList = (ordered) => {
+                html += ordered ? "<ol>" : "<ul>";
+                while (i < lines.length) {
+                    const t = lines[i].trim();
+                    let item = null;
+
+                    if (!ordered) {
+                        if (t.startsWith("- ") || t.startsWith("* ") || t.startsWith("+ ")) item = t.slice(2);
+                    } else {
+                        const dot = t.indexOf(". ");
+                        if (dot > 0) {
+                            const n = t.slice(0, dot);
+                            if (!isNaN(parseInt(n, 10))) item = t.slice(dot + 2);
+                        }
+                    }
+
+                    if (item === null) break;
+                    html += "<li>" + applyInline(item) + "</li>";
+                    i++;
+                }
+                html += ordered ? "</ol>" : "</ul>";
+            };
+
+            const renderBlockquote = () => {
+                const buf = [];
+                while (i < lines.length && lines[i].trim().startsWith(">")) {
+                    buf.push(lines[i].trim().replace(">", "").trim());
+                    i++;
+                }
+                html += "<blockquote>" + applyInline(buf.join(LF)) + "</blockquote>";
+            };
+
+            while (i < lines.length) {
+                const t = lines[i].trim();
+
+                if (t === "") {
+                    i++;
+                    continue;
+                }
+
+                if (t.startsWith("```")) {
+                    renderCode();
+                    continue;
+                }
+
+                if (t.startsWith("#")) {
+                    let level = 0;
+                    while (level < t.length && t[level] === '#') level++;
+                    if (level > 3) level = 3;
+                    const title = t.slice(level).trim();
+                    html += "<h" + level + ">" + applyInline(title) + "</h" + level + ">";
+                    i++;
+                    continue;
+                }
+
+                if (t.startsWith(">")) {
+                    renderBlockquote();
+                    continue;
+                }
+
+                if (isHr(t)) {
+                    html += "<hr />";
+                    i++;
+                    continue;
+                }
+
+                if (isUnordered(t)) {
+                    renderList(false);
+                    eatBlank();
+                    continue;
+                }
+
+                if (isOrdered(t)) {
+                    renderList(true);
+                    eatBlank();
+                    continue;
+                }
+
+                renderParagraph();
+                eatBlank();
+            }
+
+            return html;
+        }
+
+        function enhanceAboutWords() {
+            const root = document.getElementById("aboutMd");
+            if (!root) return;
+
+            const wrapIn = new Set(["P", "LI", "BLOCKQUOTE", "H1", "H2", "H3"]);
+            const skipTags = new Set(["A", "CODE", "PRE", "SCRIPT", "STYLE"]);
+
+            const walk = (el) => {
+                if (!el || el.nodeType !== 1) return;
+                if (skipTags.has(el.tagName)) return;
+
+                const nodes = Array.from(el.childNodes);
+                for (const n of nodes) {
+                    if (n.nodeType === 1) {
+                        walk(n);
+                        continue;
+                    }
+
+                    if (n.nodeType !== 3) continue;
+                    const text = n.nodeValue;
+                    if (!text || !text.trim()) continue;
+                    const parent = n.parentElement;
+                    if (!parent || !wrapIn.has(parent.tagName)) continue;
+                    if (skipTags.has(parent.tagName)) continue;
+
+                    const frag = document.createDocumentFragment();
+                    let buf = "";
+                    for (let k = 0; k < text.length; k++) {
+                        const ch = text[k];
+                        const ws = ch === " " || ch === "	" || ch === LF;
+                        if (ws) {
+                            if (buf) {
+                                const s = document.createElement("span");
+                                s.className = "w";
+                                s.textContent = buf;
+                                frag.appendChild(s);
+                                buf = "";
+                            }
+                            frag.appendChild(document.createTextNode(" "));
+                        } else {
+                            buf += ch;
+                        }
+                    }
+                    if (buf) {
+                        const s = document.createElement("span");
+                        s.className = "w";
+                        s.textContent = buf;
+                        frag.appendChild(s);
+                    }
+
+                    parent.replaceChild(frag, n);
+                }
+            };
+
+            walk(root);
+            refreshAboutWordDelays();
+        }
+
+        function refreshAboutWordDelays() {
+            const root = document.getElementById("aboutMd");
+            if (!root) return;
+            const words = root.querySelectorAll(".w");
+            if (!words || words.length === 0) return;
+            for (const w of words) w.style.transitionDelay = (Math.random() * 0.55).toFixed(3) + "s";
+        }
+
+        function applyProfile(p) {
+            const name = (p.name && p.name.trim()) ? p.name.trim() : p.login;
+            const bio = (p.bio && p.bio.trim()) ? p.bio.trim() : "Software Developer";
+            const avatar = p.avatar_url || "";
+            const ghUrl = p.html_url || ("https://github.com/" + GH_USER);
+
+            const avatarImg = document.getElementById("avatarImg");
+            if (avatarImg && avatar) {
+                avatarImg.src = avatar;
+                avatarImg.alt = name + " avatar";
+            }
+
+            const dn = document.getElementById("displayName");
+            if (dn) dn.textContent = name;
+            const bl = document.getElementById("bioLine");
+            if (bl) bl.textContent = bio;
+            const fn = document.getElementById("footerName");
+            if (fn) fn.textContent = name;
+
+            const ghNav = document.getElementById("ghNavLink");
+            if (ghNav) { ghNav.href = ghUrl; hardenExternalLink(ghNav); }
+
+            const ghCta = document.getElementById("ghCtaLink");
+            if (ghCta) { ghCta.href = ghUrl; hardenExternalLink(ghCta); }
+
+            const ghFooter = document.getElementById("footerGitHub");
+            if (ghFooter) { ghFooter.href = ghUrl; hardenExternalLink(ghFooter); }
+
+            const tileName = document.getElementById("tileName");
+            if (tileName) tileName.textContent = name;
+            const tileBio = document.getElementById("tileBio");
+            if (tileBio) tileBio.textContent = bio;
+
+            document.querySelectorAll("a[href]").forEach(hardenExternalLink);
+        }
+
+        function applyReadme(md) {
+            const about = document.getElementById("aboutMd");
+            if (about) {
+                about.innerHTML = renderMarkdown(md);
+                enhanceAboutWords();
+                about.querySelectorAll("a[href]").forEach(hardenExternalLink);
+            }
+        }
+
+        const THEME_PRESETS = {
+            paper: {
+                "--ink": "#141224",
+                "--paper": "#f4f1ea",
+                "--paper-2": "#e8e8df",
+                "--slate": "#7f7892",
+                "--plum": "#4a3a63",
+                "--violet": "#7f5e7c",
+                "--gold": "#ae895c",
+                "--accent": "#0088b1",
+                "--red": "#e22428",
+                "--bg1": "#0088b1",
+                "--bg2": "#7f5e7c",
+                "--bg3": "#ae895c",
+                "--art1": "#0088b1",
+                "--art2": "#7f5e7c",
+                "--border": "1px solid rgba(25,24,47,.14)",
+                "--shadow": "0 16px 50px rgba(15,13,25,.18)",
+                "--shadow-2": "0 10px 26px rgba(15,13,25,.14)"
+            },
+            ivory: {
+                "--ink": "#1a1427",
+                "--paper": "#f7f3e6",
+                "--paper-2": "#ece6d6",
+                "--slate": "#80788f",
+                "--plum": "#43305b",
+                "--violet": "#86627f",
+                "--gold": "#b09163",
+                "--accent": "#0a7f9a",
+                "--red": "#d93b44",
+                "--bg1": "#0a7f9a",
+                "--bg2": "#86627f",
+                "--bg3": "#b09163",
+                "--art1": "#0a7f9a",
+                "--art2": "#86627f",
+                "--border": "1px solid rgba(25,24,47,.12)",
+                "--shadow": "0 16px 50px rgba(18,15,27,.16)",
+                "--shadow-2": "0 10px 26px rgba(18,15,27,.12)"
+            },
+            mist: {
+                "--ink": "#0c1420",
+                "--paper": "#eef2f3",
+                "--paper-2": "#dfe7ea",
+                "--slate": "#5f7383",
+                "--plum": "#2b2f58",
+                "--violet": "#5f5a86",
+                "--gold": "#9f845e",
+                "--accent": "#007aa6",
+                "--red": "#d4464e",
+                "--bg1": "#007aa6",
+                "--bg2": "#5f5a86",
+                "--bg3": "#9f845e",
+                "--art1": "#007aa6",
+                "--art2": "#5f5a86",
+                "--border": "1px solid rgba(25,24,47,.12)",
+                "--shadow": "0 16px 50px rgba(15,13,25,.14)",
+                "--shadow-2": "0 10px 26px rgba(15,13,25,.10)"
+            },
+            sand: {
+                "--ink": "#1b1410",
+                "--paper": "#f3efe5",
+                "--paper-2": "#e6dfd2",
+                "--slate": "#7b6f66",
+                "--plum": "#4b3b56",
+                "--violet": "#7a617f",
+                "--gold": "#b08a55",
+                "--accent": "#0b7e95",
+                "--red": "#d33f47",
+                "--bg1": "#0b7e95",
+                "--bg2": "#7a617f",
+                "--bg3": "#b08a55",
+                "--art1": "#0b7e95",
+                "--art2": "#7a617f",
+                "--border": "1px solid rgba(25,24,47,.12)",
+                "--shadow": "0 16px 50px rgba(16,15,21,.14)",
+                "--shadow-2": "0 10px 26px rgba(16,15,21,.10)"
+            },
+            cobalt: {
+                "--ink": "#0b1020",
+                "--paper": "#eef4f6",
+                "--paper-2": "#dde9ee",
+                "--slate": "#5f6e8b",
+                "--plum": "#22284f",
+                "--violet": "#4f4f86",
+                "--gold": "#a48961",
+                "--accent": "#0088b1",
+                "--red": "#d94b50",
+                "--bg1": "#0088b1",
+                "--bg2": "#5c5b86",
+                "--bg3": "#a48961",
+                "--art1": "#0088b1",
+                "--art2": "#5c5b86",
+                "--border": "1px solid rgba(25,24,47,.14)",
+                "--shadow": "0 16px 50px rgba(15,13,25,.16)",
+                "--shadow-2": "0 10px 26px rgba(15,13,25,.12)"
+            },
+
+            ink: {
+                "--paper": "#0c0b14",
+                "--paper-2": "#121022",
+                "--ink": "#f1ecff",
+                "--slate": "#cbbfe6",
+                "--plum": "#b58be6",
+                "--violet": "#d1a0de",
+                "--gold": "#c9a57a",
+                "--accent": "#62c5dd",
+                "--red": "#ff5a63",
+                "--bg1": "#62c5dd",
+                "--bg2": "#d1a0de",
+                "--bg3": "#c9a57a",
+                "--art1": "#62c5dd",
+                "--art2": "#d1a0de",
+                "--border": "1px solid rgba(232,232,223,.12)",
+                "--shadow": "0 20px 70px rgba(0,0,0,.35)",
+                "--shadow-2": "0 14px 34px rgba(0,0,0,.28)"
+            },
+            graphite: {
+                "--paper": "#10121a",
+                "--paper-2": "#151828",
+                "--ink": "#eaf0ff",
+                "--slate": "#b6c0da",
+                "--plum": "#9b8ad0",
+                "--violet": "#b38ab6",
+                "--gold": "#c2a06d",
+                "--accent": "#5fd0d3",
+                "--red": "#ff6a6f",
+                "--bg1": "#5fd0d3",
+                "--bg2": "#9b8ad0",
+                "--bg3": "#c2a06d",
+                "--art1": "#5fd0d3",
+                "--art2": "#9b8ad0",
+                "--border": "1px solid rgba(232,232,223,.12)",
+                "--shadow": "0 22px 76px rgba(0,0,0,.38)",
+                "--shadow-2": "0 14px 34px rgba(0,0,0,.30)"
+            },
+            midnight: {
+                "--paper": "#071018",
+                "--paper-2": "#0a1420",
+                "--ink": "#e9fbff",
+                "--slate": "#99c0c6",
+                "--plum": "#8a7fc2",
+                "--violet": "#6fa0d7",
+                "--gold": "#c3a074",
+                "--accent": "#4fd0c8",
+                "--red": "#ff6376",
+                "--bg1": "#4fd0c8",
+                "--bg2": "#6fa0d7",
+                "--bg3": "#c3a074",
+                "--art1": "#4fd0c8",
+                "--art2": "#6fa0d7",
+                "--border": "1px solid rgba(232,232,223,.12)",
+                "--shadow": "0 24px 86px rgba(0,0,0,.42)",
+                "--shadow-2": "0 14px 34px rgba(0,0,0,.32)"
+            },
+            violetNight: {
+                "--paper": "#1b1426",
+                "--paper-2": "#211a2f",
+                "--ink": "#fff0fa",
+                "--slate": "#d3bfe0",
+                "--plum": "#c0a4d6",
+                "--violet": "#f2b2e3",
+                "--gold": "#c8a77a",
+                "--accent": "#69c6e6",
+                "--red": "#ff5d6a",
+                "--bg1": "#69c6e6",
+                "--bg2": "#f2b2e3",
+                "--bg3": "#c8a77a",
+                "--art1": "#69c6e6",
+                "--art2": "#f2b2e3",
+                "--border": "1px solid rgba(232,232,223,.12)",
+                "--shadow": "0 22px 80px rgba(0,0,0,.40)",
+                "--shadow-2": "0 14px 34px rgba(0,0,0,.30)"
+            },
+            gildedNight: {
+                "--paper": "#0b0a0f",
+                "--paper-2": "#12111a",
+                "--ink": "#fff3d6",
+                "--slate": "#e6d6a6",
+                "--plum": "#b8922f",
+                "--violet": "#8a6b2b",
+                "--gold": "#DEA101",
+                "--accent": "#DEA101",
+                "--red": "#ff6a3a",
+                "--bg1": "#DEA101",
+                "--bg2": "#5f2f1a",
+                "--bg3": "#1c6f78",
+                "--art1": "#DEA101",
+                "--art2": "#1c6f78",
+                "--border": "1px solid rgba(246,241,230,.14)",
+                "--shadow": "0 26px 94px rgba(0,0,0,.48)",
+                "--shadow-2": "0 14px 34px rgba(0,0,0,.36)"
+            },
+
+            white: {
+                "--ink": "#0a0a0f",
+                "--paper": "#ffffff",
+                "--paper-2": "#ffffff",
+                "--slate": "#2a2a35",
+                "--plum": "#0a0a0f",
+                "--violet": "#0a0a0f",
+                "--gold": "#0a0a0f",
+                "--accent": "#0a0a0f",
+                "--red": "#0a0a0f",
+                "--bg1": "#ffffff",
+                "--bg2": "#ffffff",
+                "--bg3": "#ffffff",
+                "--art1": "#0a0a0f",
+                "--art2": "#0a0a0f",
+                "--border": "1px solid rgba(0,0,0,.12)",
+                "--shadow": "0 16px 50px rgba(0,0,0,.10)",
+                "--shadow-2": "0 10px 26px rgba(0,0,0,.08)"
+            },
+            black: {
+                "--ink": "#f5f6f8",
+                "--paper": "#000000",
+                "--paper-2": "#000000",
+                "--slate": "#cfd3da",
+                "--plum": "#f5f6f8",
+                "--violet": "#f5f6f8",
+                "--gold": "#f5f6f8",
+                "--accent": "#f5f6f8",
+                "--red": "#f5f6f8",
+                "--bg1": "#000000",
+                "--bg2": "#000000",
+                "--bg3": "#000000",
+                "--art1": "#f5f6f8",
+                "--art2": "#f5f6f8",
+                "--border": "1px solid rgba(245,246,248,.14)",
+                "--shadow": "0 26px 94px rgba(0,0,0,.62)",
+                "--shadow-2": "0 14px 34px rgba(0,0,0,.48)"
+            }
+        };
+
+        const THEME_GROUPS = {
+            Light: ["white", "paper", "ivory", "mist", "sand", "cobalt"],
+            Dark: ["black", "ink", "graphite", "midnight", "violetNight", "gildedNight"]
+        };
+
+        const THEME_LABELS = {
+            white: "White",
+            paper: "Paper",
+            ivory: "Ivory",
+            mist: "Mist",
+            sand: "Sand",
+            cobalt: "Cobalt",
+            black: "Black",
+            ink: "Ink",
+            graphite: "Graphite",
+            midnight: "Midnight",
+            violetNight: "Violet",
+            gildedNight: "Gilded"
+        };
+
+        const THEME_STAGGER = [
+            ["--paper", "--paper-2"],
+            ["--bg1", "--bg2", "--bg3"],
+            ["--ink", "--slate"],
+            ["--accent", "--violet", "--plum"],
+            ["--gold", "--red"],
+            ["--art1", "--art2"],
+            ["--border"],
+            ["--shadow", "--shadow-2"]
+        ];
+
+        function buildThemeMenu() {
+            const menu = document.getElementById("themeMenu");
+            const list = document.getElementById("themeOptions");
+            if (!menu || !list) return;
+
+            list.textContent = "";
+
+            const currentTheme =
+                document.documentElement.dataset.theme ||
+                localStorage.getItem("mc_theme") ||
+                "paper";
+
+            const mkBtn = (key) => {
+                const b = document.createElement("button");
+                b.className = "themeOption";
+                b.type = "button";
+                b.dataset.theme = key;
+
+                const pressed = key === currentTheme;
+                b.setAttribute("aria-pressed", pressed ? "true" : "false");
+
+                const sw = document.createElement("span");
+                sw.className = "optSw";
+                sw.setAttribute("style", `background:${THEME_PRESETS[key]["--paper"]}`);
+
+                b.appendChild(sw);
+                b.appendChild(document.createTextNode(THEME_LABELS[key] ?? key));
+                return b;
+            };
+
+            for (const [groupName, keys] of Object.entries(THEME_GROUPS)) {
+                const section = document.createElement("div");
+                section.className = "themeSection";
+
+                const title = document.createElement("div");
+                title.className = "themeSectionTitle";
+                title.textContent = groupName;
+
+                section.appendChild(title);
+                for (const key of keys) section.appendChild(mkBtn(key));
+
+                list.appendChild(section);
+            }
+        }
+
+        // Call once on load, before initThemePicker wires click handlers
+        buildThemeMenu();
+
+
+        function setThemeButtons(active) {
+            document.querySelectorAll(".themeOption").forEach((b) => {
+                b.setAttribute("aria-pressed", b.dataset.theme === active ? "true" : "false");
+            });
+        }
+
+        function applyThemeStaggered(name) {
+            const preset = THEME_PRESETS[name];
+            if (!preset) return;
+
+            const root = document.documentElement;
+            root.dataset.theme = name;
+            root.classList.add("themeChanging");
+            refreshAboutWordDelays();
+
+            const steps = THEME_STAGGER
+                .map((keys) => keys.filter((k) => k in preset))
+                .filter((k) => k.length > 0);
+
+            let step = 0;
+            const run = () => {
+                if (step >= steps.length) return;
+                for (const key of steps[step]) root.style.setProperty(key, preset[key]);
+                step++;
+                window.setTimeout(run, 140);
+            };
+
+            run();
+            setThemeButtons(name);
+
+            const label = name === "violetNight" ? "Violet" : (name === "gildedNight" ? "Gilded" : (name.charAt(0).toUpperCase() + name.slice(1)));
+            const labelEl = document.getElementById("themeLabelText");
+            if (labelEl) labelEl.textContent = "Theme: " + label;
+            const sw = document.getElementById("themeSwatch");
+            if (sw) sw.style.background = preset["--paper"] || "#f4f1ea";
+
+            try { localStorage.setItem("mc_theme", name); } catch { }
+
+            window.setTimeout(() => {
+                root.classList.remove("themeChanging");
+            }, 1600);
+        }
+
+        function initFooterDock() {
+            const footer = document.querySelector("footer");
+            const menu = document.getElementById("themeMenu");
+            if (!footer || !menu) return;
+
+            const setDocked = (docked) => {
+                if (docked) menu.classList.add("docked");
+                else menu.classList.remove("docked");
+            };
+
+            if ("IntersectionObserver" in window) {
+                const io = new IntersectionObserver(
+                    (entries) => {
+                        const e = entries && entries[0];
+                        if (!e) return;
+                        const footerVisible = e.isIntersecting && e.intersectionRatio > 0.25;
+                        setDocked(!footerVisible);
+                    },
+                    { threshold: [0, 0.25, 0.6, 1.0] }
+                );
+                io.observe(footer);
+            } else {
+                const onScroll = () => {
+                    const r = footer.getBoundingClientRect();
+                    const vh = window.innerHeight || document.documentElement.clientHeight;
+                    const footerVisible = r.top < vh && r.bottom > 0;
+                    setDocked(!footerVisible);
+                };
+                window.addEventListener("scroll", onScroll, { passive: true });
+                window.addEventListener("resize", onScroll);
+                onScroll();
+            }
+        }
+
+        function initThemePicker() {
+            const saved = (() => {
+                try { return localStorage.getItem("mc_theme"); } catch { return null; }
+            })();
+
+            const initial = saved && THEME_PRESETS[saved] ? saved : "paper";
+            applyThemeStaggered(initial);
+
+            const menu = document.getElementById("themeMenu");
+
+            const closeMenu = () => {
+                if (!menu || !menu.open) return;
+                menu.classList.add("closing");
+                window.setTimeout(() => {
+                    menu.open = false;
+                    menu.classList.remove("closing");
+                }, 110);
+            };
+
+            document.querySelectorAll(".themeOption").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    applyThemeStaggered(btn.dataset.theme);
+                    closeMenu();
+                });
+            });
+
+            document.addEventListener("click", (e) => {
+                if (!menu || !menu.open) return;
+                if (menu.contains(e.target)) return;
+                closeMenu();
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeMenu();
+            });
+        }
+
+        initFooterDock();
+
+        initThemePicker();
+
+        Promise.all([
+            fetchProfile(GH_USER).then(applyProfile).catch(() => { }),
+            fetchReadmeRaw(README_OWNER, README_REPO, README_BRANCH, README_PATH).then(applyReadme).catch(() => {
+                const about = document.getElementById("aboutMd");
+                if (about) about.innerHTML = "<p>Unable to load README content.</p>";
+            })
+        ]);
+    </script>
+</body>
+
+</html>
