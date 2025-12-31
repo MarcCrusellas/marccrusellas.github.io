@@ -39,12 +39,13 @@
     form-action 'self';
     object-src 'none';
 
-    script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;
-    script-src-elem 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;
+    script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com;
+    script-src-elem 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com;
 
     style-src 'self' 'unsafe-inline';
-    img-src 'self' data: https://github.com https://avatars.githubusercontent.com;
-    connect-src 'self' https://api.github.com https://raw.githubusercontent.com;
+    img-src 'self' data: https://github.com https://avatars.githubusercontent.com https://www.googletagmanager.com https://www.google-analytics.com;
+    connect-src 'self' https://api.github.com https://raw.githubusercontent.com https://www.googletagmanager.com https://www.google-analytics.com;
+    frame-src https://www.googletagmanager.com;
 
     worker-src 'self' blob:;">
 
