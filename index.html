@@ -33,9 +33,21 @@
     <link rel="icon" href="https://github.com/MarcCrusellas.png" />
     <link rel="me" href="https://github.com/MarcCrusellas" />
     <link rel="me" id="meLinkedIn" href="https://www.linkedin.com/in/marccrusellas" />
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  base-uri 'self';
+  form-action 'self';
+  object-src 'none';
 
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://github.com https://avatars.githubusercontent.com; connect-src 'self' https://api.github.com https://raw.githubusercontent.com" />
+  script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;
+  script-src-elem 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com;
+
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data: https://github.com https://avatars.githubusercontent.com;
+  connect-src 'self' https://api.github.com https://raw.githubusercontent.com;
+
+  worker-src 'self' blob:;
+">
 
     <script type="application/ld+json">
   {
@@ -50,6 +62,7 @@
     ]
   }
   </script>
+
     <!-- You don’t have to keep searching for clues: yep, this page is AI-made. I’m focusing on other projects right now, and when I design stuff by hand I can spend 3 hours just tweaking border-radius… so trust me, this is way better (for now). -->
 
     <style>
@@ -61,6 +74,15 @@
             --bg3: #ae895c;
             --art1: #0088b1;
             --art2: #7f5e7c;
+
+            --ink: #141224;
+            --paper: #f4f1ea;
+            --paper-2: #e8e8df;
+            --slate: #7f7892;
+            --plum: #4a3a63;
+            --violet: #7f5e7c;
+            --gold: #ae895c;
+            --accent: #0088b1;
 
             --radius: 18px;
             --radius-lg: 26px;
@@ -75,6 +97,7 @@
                 --paper: #0c0b14;
                 --paper-2: #121022;
                 --ink: #f4f1ea;
+                --slate: #cbbfe6;
                 --border: 1px solid rgba(232, 232, 223, .12);
                 --shadow: 0 20px 70px rgba(0, 0, 0, .35);
                 --shadow-2: 0 14px 34px rgba(0, 0, 0, .28);
@@ -139,6 +162,16 @@
                 conic-gradient(from 240deg at 58% 58%, rgba(222, 161, 1, .10), transparent 62%, rgba(95, 208, 211, .10));
             opacity: .96;
             filter: saturate(1.18) contrast(1.05);
+        }
+
+        html.fx--europeDay body::before {
+            filter: saturate(1.22) contrast(1.03);
+            opacity: .98;
+        }
+
+        html.fx--springGlow body::before {
+            filter: saturate(1.18) contrast(1.02);
+            opacity: .97;
         }
 
         a {
@@ -631,18 +664,6 @@
             transform: translateY(8px) scale(.985);
         }
 
-        @keyframes pop {
-            from {
-                opacity: 0;
-                transform: translateY(8px) scale(.98)
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1)
-            }
-        }
-
         .themeSection {
             border-radius: 18px;
             border: var(--border);
@@ -807,12 +828,6 @@
             font-size: 14px;
             line-height: 1.55;
             max-width: 52ch;
-        }
-
-        @media (max-width: 520px) {
-            .actionRow {
-                flex-wrap: wrap;
-            }
         }
 
         .md {
@@ -1033,7 +1048,6 @@
             filter: saturate(1.18) contrast(1.05);
         }
 
-
         @media (max-width: 980px) {
             .tileArt {
                 grid-column: span 6;
@@ -1045,10 +1059,173 @@
                 grid-column: span 12;
             }
         }
+
+        #fxLayer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        #fxParticles,
+        #fxVanta,
+        #fxFireworks {
+            position: absolute;
+            inset: 0;
+        }
+
+        #fxFireworks {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        #fxConfetti {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .fxStatus {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 12px 0 0;
+        }
+
+        .fxPill {
+            padding: 8px 10px;
+            border-radius: 999px;
+            border: var(--border);
+            background: color-mix(in srgb, var(--paper) 86%, transparent);
+            font-size: 13px;
+            color: color-mix(in srgb, var(--ink) 72%, var(--slate));
+        }
+
+        .fxBadge {
+            padding: 5px 8px;
+            border-radius: 999px;
+            border: var(--border);
+            background: color-mix(in srgb, var(--paper) 86%, transparent);
+            font-size: 12px;
+            letter-spacing: .7px;
+            text-transform: uppercase;
+            color: color-mix(in srgb, var(--ink) 76%, var(--slate));
+        }
+
+        .fxCatalog {
+            margin: 14px 0 0;
+            padding: 0;
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+
+        .fxItem {
+            border: var(--border);
+            background: color-mix(in srgb, var(--paper) 88%, transparent);
+            border-radius: 18px;
+            padding: 12px 14px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .fxItem[data-active="true"] {
+            border-color: color-mix(in srgb, var(--accent) 45%, rgba(25, 24, 47, .14));
+            box-shadow: 0 12px 28px rgba(15, 13, 25, .12);
+        }
+
+        .fxItem .meta {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            min-width: 0;
+        }
+
+        .fxItem .titleRow {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .fxItem strong {
+            font-size: 14px;
+            letter-spacing: -0.1px;
+        }
+
+        .fxItem .desc {
+            margin: 0;
+            font-size: 13px;
+            color: color-mix(in srgb, var(--ink) 70%, var(--slate));
+            line-height: 1.5;
+        }
+
+        .fxItem .when {
+            font-size: 12px;
+            color: color-mix(in srgb, var(--ink) 60%, var(--slate));
+        }
+
+        .fxDevControls {
+            margin-top: 14px;
+            border-top: var(--border);
+            padding-top: 14px;
+            display: none;
+        }
+
+        .fxDevControls.on {
+            display: block;
+        }
+
+        .fxDevGrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 10px;
+            align-items: end;
+        }
+
+        @media (max-width: 680px) {
+            .fxDevGrid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .fxDevControls label {
+            font-size: 12px;
+            color: color-mix(in srgb, var(--ink) 68%, var(--slate));
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .fxDevControls input[type="date"] {
+            border: var(--border);
+            background: color-mix(in srgb, var(--paper) 90%, transparent);
+            border-radius: 14px;
+            padding: 10px 12px;
+            color: inherit;
+            font: inherit;
+        }
+
+        .fxDevControls input[type="checkbox"] {
+            transform: translateY(1px);
+        }
     </style>
 </head>
 
 <body>
+
+    <div id="fxLayer" aria-hidden="true">
+        <div id="fxParticles"></div>
+        <div id="fxVanta"></div>
+        <div id="fxFireworks"></div>
+        <canvas id="fxConfetti"></canvas>
+    </div>
+
     <div class="grain" aria-hidden="true"></div>
 
     <header>
@@ -1066,6 +1243,7 @@
             <nav aria-label="Primary">
                 <a class="pill" href="#projects">Projects</a>
                 <a class="pill" href="#about">About</a>
+                <a class="pill" href="#seasonal">Seasonal</a>
                 <a class="pill primary" href="/api-integrator/">API Integrator</a>
                 <a class="pill" id="ghNavLink" href="https://github.com/MarcCrusellas" rel="noreferrer noopener"
                     target="_blank">GitHub</a>
@@ -1079,6 +1257,7 @@
         <script>
             document.documentElement.classList.add("tAll");
         </script>
+
         <section class="hero">
             <div class="heroGrid">
                 <div class="panel">
@@ -1118,8 +1297,6 @@
                             <div class="tileName" id="tileName">Marc Crusellas</div>
                             <p class="tileBio" id="tileBio">Software Developer</p>
                         </div>
-
-
                     </div>
                 </a>
             </div>
@@ -1178,6 +1355,48 @@
                 <div class="inner">
                     <div class="md" id="aboutMd">
                         <p style="margin:0">Loading…</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="seasonal" aria-label="Seasonal effects">
+            <div class="sectionHead">
+                <h2>Seasonal</h2>
+                <div class="lead">Date-based background effects (loaded only when needed).</div>
+            </div>
+
+            <div class="panel">
+                <div class="inner">
+                    <div class="md">
+                        <p style="margin:0">This page can enable background effects on specific dates (snow, fireworks,
+                            fog, etc.). Effects are loaded on-demand from CDNs, and disabled automatically when
+                            <code>prefers-reduced-motion</code> is enabled. You can simulate a date locally with
+                            <code>?date=YYYY-MM-DD</code> (e.g. <code>?date=2026-01-01</code>).
+                        </p>
+
+                        <div class="fxStatus" aria-label="Seasonal status">
+                            <span class="fxPill">Active: <strong id="fxActiveLabel">None</strong></span>
+                            <span class="fxPill">Date: <span id="fxDateLabel">—</span></span>
+                        </div>
+
+                        <ul class="fxCatalog" id="fxCatalog" aria-label="Effect catalog">
+                            <li class="fxItem">
+                                <div class="meta"><strong>Loading…</strong></div>
+                            </li>
+                        </ul>
+
+                        <form class="fxDevControls" id="fxDevControls" aria-hidden="true">
+                            <div class="fxDevGrid">
+                                <label>Override date (dev only)
+                                    <input type="date" id="fxOverrideDate" />
+                                </label>
+                                <label>Enable override
+                                    <input type="checkbox" id="fxOverrideOn" />
+                                </label>
+                                <button class="pill" type="button" id="fxOverrideApply">Apply</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -1632,6 +1851,8 @@
             }
         }
 
+        // Starts Theme ---
+
         const THEME_PRESETS = {
             paper: {
                 "--ink": "#141224",
@@ -1941,9 +2162,612 @@
             }
         }
 
-        // Call once on load, before initThemePicker wires click handlers
         buildThemeMenu();
 
+        // Close Theme --
+
+        // Start Yearly Effects
+        const FX = (() => {
+            const loaded = new Map();
+            const active = new Map();
+
+            const CONFETTI_SRC = "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js";
+            const FIREWORKS_SRC = "https://cdn.jsdelivr.net/npm/fireworks-js@2.10.7/dist/index.umd.js";
+            const TSPARTICLES_SRC = "https://cdn.jsdelivr.net/npm/tsparticles@3.9.1/tsparticles.bundle.min.js";
+
+            const prefersReducedMotion = () =>
+                window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            const validISODate = (v) => {
+                if (typeof v !== "string") return false;
+                if (v.length !== 10) return false;
+                if (v[4] !== "-" || v[7] !== "-") return false;
+                const d = new Date(v + "T12:00:00");
+                return !isNaN(d.getTime());
+            };
+
+            const loadScriptOnce = (src) => {
+                if (loaded.has(src)) return loaded.get(src);
+                const p = new Promise((resolve, reject) => {
+                    const s = document.createElement("script");
+                    s.src = src;
+                    s.async = true;
+                    s.onload = resolve;
+                    s.onerror = () => reject(new Error("Failed to load: " + src));
+                    document.head.appendChild(s);
+                });
+                loaded.set(src, p);
+                return p;
+            };
+
+            const readFxOverride = () => {
+                try {
+                    const on = localStorage.getItem("mc_fx_override_on") === "1";
+                    const date = localStorage.getItem("mc_fx_override_date") || "";
+                    return { on, date };
+                } catch {
+                    return { on: false, date: "" };
+                }
+            };
+
+            const getNow = () => {
+                try {
+                    const q = new URLSearchParams(location.search).get("date");
+                    if (validISODate(q)) {
+                        const d = new Date(q + "T12:00:00");
+                        if (!isNaN(d.getTime())) return d;
+                    }
+                } catch { }
+
+                const o = readFxOverride();
+                if (o.on && o.date) {
+                    const d = new Date(o.date + "T12:00:00");
+                    if (!isNaN(d.getTime())) return d;
+                }
+                return new Date();
+            };
+
+            const inAnnualRange = (now, startMD, endMD) => {
+                const m = now.getMonth() + 1;
+                const d = now.getDate();
+
+                const a = startMD.m * 100 + startMD.d;
+                const b = endMD.m * 100 + endMD.d;
+                const x = m * 100 + d;
+
+                if (a <= b) return x >= a && x <= b;
+                return x >= a || x <= b;
+            };
+
+            const isAnnualDay = (now, md) => (now.getMonth() + 1) === md.m && now.getDate() === md.d;
+
+            const nthWeekdayOfMonth = (now, month, weekday, n) => {
+                if ((now.getMonth() + 1) !== month) return false;
+                const y = now.getFullYear();
+                const first = new Date(y, month - 1, 1);
+                const firstWeekday = first.getDay();
+                const offset = (weekday - firstWeekday + 7) % 7;
+                const day = 1 + offset + (n - 1) * 7;
+                return now.getDate() === day;
+            };
+
+            const lastWeekdayOfMonth = (now, month, weekday) => {
+                if ((now.getMonth() + 1) !== month) return false;
+                const y = now.getFullYear();
+                const last = new Date(y, month, 0);
+                const lastWeekday = last.getDay();
+                const offset = (lastWeekday - weekday + 7) % 7;
+                const day = last.getDate() - offset;
+                return now.getDate() === day;
+            };
+
+            const clearEl = (id) => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                el.innerHTML = "";
+            };
+
+            const stopParticles = async () => {
+                try {
+                    if (window.tsParticles?.dom) {
+                        const all = window.tsParticles.dom();
+                        for (const inst of all) {
+                            if (inst?.id === "fxParticles") {
+                                try { inst.destroy?.(); } catch { }
+                            }
+                        }
+                    }
+                } catch { }
+                clearEl("fxParticles");
+            };
+
+            const stopVanta = (state) => {
+                try { state?.vanta?.destroy?.(); } catch { }
+                const el = document.getElementById("fxVanta");
+                if (el) el.style.cssText = "";
+            };
+
+            const stopFireworks = (state) => {
+                try { state?.fw?.stop?.(); } catch { }
+                try { state?.fw?.clear?.(); } catch { }
+                try { state?.fw?.destroy?.(); } catch { }
+                try { state?.fw?.dispose?.(); } catch { }
+                clearEl("fxFireworks");
+            };
+
+            const getThemePalette = () => {
+                const cs = window.getComputedStyle(document.documentElement);
+                const keys = ["--accent", "--violet", "--gold", "--red", "--plum"];
+                const vals = keys.map((k) => cs.getPropertyValue(k).trim()).filter(Boolean);
+                return vals.length ? vals : ["#0088b1", "#7f5e7c", "#ae895c", "#e22428"];
+            };
+
+            const confettiState = { conf: null, cleanup: null };
+
+            const ensureConfetti = async () => {
+                if (confettiState.conf) return confettiState;
+
+                const canvas = document.getElementById("fxConfetti");
+                if (!canvas) return confettiState;
+
+                const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+                const resize = () => {
+                    canvas.width = Math.floor(canvas.clientWidth * dpr);
+                    canvas.height = Math.floor(canvas.clientHeight * dpr);
+                };
+                resize();
+                window.addEventListener("resize", resize, { passive: true });
+
+                await loadScriptOnce(CONFETTI_SRC);
+                const conf = window.confetti?.create?.(canvas, { resize: true, useWorker: true });
+                confettiState.conf = conf || null;
+                confettiState.cleanup = () => window.removeEventListener("resize", resize);
+                return confettiState;
+            };
+
+            const mountSnow = async () => {
+                await loadScriptOnce(TSPARTICLES_SRC);
+
+                const tp = window.tsParticles;
+                if (!tp?.load) return null;
+
+                const opts = {
+                    fullScreen: { enable: false },
+                    background: { color: { value: "transparent" } },
+                    fpsLimit: 60,
+                    detectRetina: true,
+                    particles: {
+                        number: { value: 140, density: { enable: true, area: 900 } },
+                        color: { value: "#ffffff" },
+                        opacity: { value: { min: 0.18, max: 0.65 } },
+                        size: { value: { min: 1, max: 3 } },
+                        move: {
+                            enable: true,
+                            direction: "bottom",
+                            speed: { min: 0.6, max: 2.0 },
+                            outModes: { default: "out" }
+                        },
+                        shape: { type: "circle" }
+                    },
+                    interactivity: { events: { resize: true } }
+                };
+
+                try {
+                    return await tp.load("fxParticles", opts);
+                } catch {
+                    try {
+                        return await tp.load({ id: "fxParticles", options: opts });
+                    } catch {
+                        return null;
+                    }
+                }
+            };
+
+            const mountFog = async (state) => {
+                await loadScriptOnce("https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js");
+                await loadScriptOnce("https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.fog.min.js");
+
+                const el = document.getElementById("fxVanta");
+                if (!el || !window.VANTA?.FOG) return null;
+
+                state.vanta = window.VANTA.FOG({
+                    el,
+                    mouseControls: false,
+                    touchControls: false,
+                    gyroControls: false,
+                    highlightColor: 0x2a8aa0,
+                    midtoneColor: 0x6b4a78,
+                    lowlightColor: 0x1a1427,
+                    baseColor: 0x0c0b14,
+                    blurFactor: 0.6,
+                    speed: 0.8,
+                    zoom: 0.9
+                });
+
+                return state.vanta;
+            };
+
+            const mountFireworks = async () => {
+                const el = document.getElementById("fxFireworks");
+                if (!el) return null;
+
+                await loadScriptOnce("https://cdn.jsdelivr.net/npm/fireworks-js@latest/dist/fireworks.js");
+
+                const FireworksCtor = window.Fireworks;
+                if (typeof FireworksCtor !== "function") return null;
+
+                const fw = new FireworksCtor(el, {
+                    autoresize: true,
+                    opacity: 0.85,
+                    acceleration: 1.02,
+                    friction: 0.98,
+                    gravity: 1.2,
+                    particles: 90,
+                    traceLength: 2.8,
+                    traceSpeed: 6,
+                    explosion: 6,
+                    intensity: 26,
+                    sound: { enabled: false }
+                });
+
+                fw.start();
+
+                return async () => {
+                    try { fw.stop(); } catch { }
+                    el.innerHTML = "";
+                };
+            };
+
+            const mountRootClass = (cls) => {
+                document.documentElement.classList.add(cls);
+                return async () => document.documentElement.classList.remove(cls);
+            };
+
+            const EFFECTS = [
+                {
+                    id: "xmas_snow",
+                    title: "Winter / Christmas snow",
+                    kind: "JS",
+                    uses: "tsParticles",
+                    whenText: "Dec 10 - Jan 7",
+                    desc: "Snowfall overlay.",
+                    when: (now) => inAnnualRange(now, { m: 12, d: 10 }, { m: 1, d: 7 }),
+                    mount: async () => {
+                        await mountSnow();
+                        return async () => { await stopParticles(); };
+                    }
+                },
+                {
+                    id: "newyear_fireworks",
+                    title: "New Year fireworks",
+                    kind: "JS",
+                    uses: "fireworks-js + canvas-confetti",
+                    whenText: "Dec 31 - Jan 1",
+                    desc: "Animated fireworks in the background plus a few confetti bursts.",
+                    when: (now) => inAnnualRange(now, { m: 12, d: 31 }, { m: 1, d: 1 }),
+                    mount: async (state) => {
+                        await mountFireworks(state, "high");
+                        const c = await ensureConfetti();
+                        if (c?.conf) {
+                            const colors = getThemePalette();
+                            const burst = () => c.conf({
+                                particleCount: 160,
+                                spread: 80,
+                                startVelocity: 55,
+                                ticks: 180,
+                                origin: { y: 0.7 },
+                                colors
+                            });
+                            burst();
+                            setTimeout(burst, 450);
+                            setTimeout(burst, 900);
+                        }
+                        return async () => { stopFireworks(state); };
+                    }
+                },
+                {
+                    id: "halloween_fog",
+                    title: "Halloween fog",
+                    kind: "JS",
+                    uses: "Vanta.js (fog) + three.js",
+                    whenText: "Oct 20 - Nov 2",
+                    desc: "Slow moving fog layer behind the content.",
+                    when: (now) => inAnnualRange(now, { m: 10, d: 20 }, { m: 11, d: 2 }),
+                    mount: async (state) => {
+                        await mountFog(state);
+                        return async () => { stopVanta(state); };
+                    }
+                },
+                {
+                    id: "pride_sparkle",
+                    title: "Pride month sparkle",
+                    kind: "JS",
+                    uses: "canvas-confetti",
+                    whenText: "Jun 1 - Jun 30",
+                    desc: "Small, occasional sparkles near the top edge.",
+                    when: (now) => inAnnualRange(now, { m: 6, d: 1 }, { m: 6, d: 30 }),
+                    mount: async () => {
+                        const c = await ensureConfetti();
+                        if (!c?.conf) return async () => { };
+
+                        let on = true;
+                        const colors = getThemePalette();
+                        const tick = () => {
+                            if (!on) return;
+                            c.conf({
+                                particleCount: 14,
+                                spread: 120,
+                                startVelocity: 24,
+                                ticks: 140,
+                                origin: { x: Math.random(), y: 0.18 + Math.random() * 0.22 },
+                                colors
+                            });
+                            setTimeout(tick, 260);
+                        };
+                        tick();
+
+                        return async () => { on = false; };
+                    }
+                },
+                {
+                    id: "sant_jordi",
+                    title: "Sant Jordi (Catalonia)",
+                    kind: "JS",
+                    uses: "canvas-confetti",
+                    whenText: "Apr 23",
+                    desc: "A few rose-like bursts.",
+                    when: (now) => isAnnualDay(now, { m: 4, d: 23 }),
+                    mount: async () => {
+                        const c = await ensureConfetti();
+                        if (!c?.conf) return async () => { };
+
+                        const colors = getThemePalette();
+                        c.conf({ particleCount: 120, spread: 70, startVelocity: 45, ticks: 160, origin: { x: 0.25, y: 0.62 }, colors });
+                        c.conf({ particleCount: 120, spread: 70, startVelocity: 45, ticks: 160, origin: { x: 0.75, y: 0.62 }, colors });
+                        return async () => { };
+                    }
+                },
+                {
+                    id: "india_republic",
+                    title: "India: Republic Day",
+                    kind: "JS",
+                    uses: "canvas-confetti",
+                    whenText: "Jan 26",
+                    desc: "Short celebratory bursts.",
+                    when: (now) => isAnnualDay(now, { m: 1, d: 26 }),
+                    mount: async () => {
+                        const c = await ensureConfetti();
+                        if (!c?.conf) return async () => { };
+                        const colors = getThemePalette();
+                        c.conf({ particleCount: 160, spread: 90, startVelocity: 52, ticks: 180, origin: { y: 0.65 }, colors });
+                        return async () => { };
+                    }
+                },
+                {
+                    id: "india_independence",
+                    title: "India: Independence Day",
+                    kind: "JS",
+                    uses: "canvas-confetti",
+                    whenText: "Aug 15",
+                    desc: "Short celebratory bursts.",
+                    when: (now) => isAnnualDay(now, { m: 8, d: 15 }),
+                    mount: async () => {
+                        const c = await ensureConfetti();
+                        if (!c?.conf) return async () => { };
+                        const colors = getThemePalette();
+                        c.conf({ particleCount: 170, spread: 95, startVelocity: 54, ticks: 190, origin: { y: 0.66 }, colors });
+                        return async () => { };
+                    }
+                },
+                {
+                    id: "usa_july4",
+                    title: "US: Independence Day",
+                    kind: "JS",
+                    uses: "fireworks-js",
+                    whenText: "Jul 4",
+                    desc: "Fireworks in the background.",
+                    when: (now) => isAnnualDay(now, { m: 7, d: 4 }),
+                    mount: async (state) => {
+                        await mountFireworks(state, "high");
+                        return async () => { stopFireworks(state); };
+                    }
+                },
+                {
+                    id: "thanksgiving",
+                    title: "US: Thanksgiving",
+                    kind: "JS",
+                    uses: "canvas-confetti",
+                    whenText: "4th Thu of Nov",
+                    desc: "A subtle celebratory burst.",
+                    when: (now) => nthWeekdayOfMonth(now, 11, 4, 4),
+                    mount: async () => {
+                        const c = await ensureConfetti();
+                        if (!c?.conf) return async () => { };
+                        const colors = getThemePalette();
+                        c.conf({ particleCount: 120, spread: 80, startVelocity: 40, ticks: 160, origin: { y: 0.7 }, colors });
+                        return async () => { };
+                    }
+                },
+                {
+                    id: "europe_day",
+                    title: "Europe Day",
+                    kind: "CSS",
+                    uses: "CSS only",
+                    whenText: "May 9",
+                    desc: "Slightly richer background glow (no JS).",
+                    when: (now) => isAnnualDay(now, { m: 5, d: 9 }),
+                    mount: async () => mountRootClass("fx--europeDay")
+                },
+                {
+                    id: "spring_equinox",
+                    title: "Spring week",
+                    kind: "CSS",
+                    uses: "CSS only",
+                    whenText: "Mar 18 - Mar 25",
+                    desc: "A small boost in saturation/contrast.",
+                    when: (now) => inAnnualRange(now, { m: 3, d: 18 }, { m: 3, d: 25 }),
+                    mount: async () => mountRootClass("fx--springGlow")
+                },
+                {
+                    id: "memorial_day",
+                    title: "US: Memorial Day",
+                    kind: "JS",
+                    uses: "canvas-confetti",
+                    whenText: "Last Mon of May",
+                    desc: "A quiet burst.",
+                    when: (now) => lastWeekdayOfMonth(now, 5, 1),
+                    mount: async () => {
+                        const c = await ensureConfetti();
+                        if (!c?.conf) return async () => { };
+                        const colors = getThemePalette();
+                        c.conf({ particleCount: 100, spread: 70, startVelocity: 36, ticks: 150, origin: { y: 0.74 }, colors });
+                        return async () => { };
+                    }
+                }
+            ];
+
+            const renderUi = (now) => {
+                const activeIds = new Set(active.keys());
+
+                const elDate = document.getElementById("fxDateLabel");
+                if (elDate) {
+                    const y = now.getFullYear();
+                    const m = String(now.getMonth() + 1).padStart(2, "0");
+                    const d = String(now.getDate()).padStart(2, "0");
+                    elDate.textContent = `${y}-${m}-${d}`;
+                }
+
+                const elActive = document.getElementById("fxActiveLabel");
+                if (elActive) {
+                    const titles = EFFECTS.filter((e) => activeIds.has(e.id)).map((e) => e.title);
+                    elActive.textContent = titles.length ? titles.join(", ") : "None";
+                }
+
+                const list = document.getElementById("fxCatalog");
+                if (!list) return;
+
+                list.textContent = "";
+                for (const e of EFFECTS) {
+                    const li = document.createElement("li");
+                    li.className = "fxItem";
+                    li.dataset.active = activeIds.has(e.id) ? "true" : "false";
+
+                    const meta = document.createElement("div");
+                    meta.className = "meta";
+
+                    const titleRow = document.createElement("div");
+                    titleRow.className = "titleRow";
+
+                    const title = document.createElement("strong");
+                    title.textContent = e.title;
+
+                    const b1 = document.createElement("span");
+                    b1.className = "fxBadge";
+                    b1.textContent = e.kind;
+
+                    const b2 = document.createElement("span");
+                    b2.className = "fxBadge";
+                    b2.textContent = e.uses;
+
+                    titleRow.appendChild(title);
+                    titleRow.appendChild(b1);
+                    titleRow.appendChild(b2);
+
+                    const when = document.createElement("div");
+                    when.className = "when";
+                    when.textContent = e.whenText;
+
+                    const desc = document.createElement("p");
+                    desc.className = "desc";
+                    desc.textContent = e.desc;
+
+                    meta.appendChild(titleRow);
+                    meta.appendChild(when);
+                    meta.appendChild(desc);
+
+                    li.appendChild(meta);
+                    list.appendChild(li);
+                }
+            };
+
+            const evaluate = async () => {
+                if (prefersReducedMotion()) {
+                    for (const [id, unmount] of active.entries()) {
+                        try { await unmount(); } catch { }
+                        active.delete(id);
+                    }
+                    renderUi(getNow());
+                    return;
+                }
+
+                const now = getNow();
+                const should = new Set(EFFECTS.filter((e) => e.when(now)).map((e) => e.id));
+
+                for (const [id, unmount] of active.entries()) {
+                    if (!should.has(id)) {
+                        try { await unmount(); } catch { }
+                        active.delete(id);
+                    }
+                }
+
+                for (const e of EFFECTS) {
+                    if (!should.has(e.id)) continue;
+                    if (active.has(e.id)) continue;
+                    const state = {};
+                    const unmount = await e.mount(state);
+                    active.set(e.id, unmount || (async () => { }));
+                }
+
+                renderUi(now);
+            };
+
+            const schedule = () => {
+                const now = new Date();
+                const next = new Date(now);
+                next.setHours(24, 0, 5, 0);
+                const ms = Math.max(15_000, next.getTime() - now.getTime());
+                setTimeout(async () => {
+                    await evaluate();
+                    schedule();
+                }, ms);
+            };
+
+            const initDevControls = () => {
+                const debugOn = (() => {
+                    try { return localStorage.getItem("mc_fx_debug") === "1"; } catch { return false; }
+                })();
+
+                const form = document.getElementById("fxDevControls");
+                const inpDate = document.getElementById("fxOverrideDate");
+                const chkOn = document.getElementById("fxOverrideOn");
+                const btn = document.getElementById("fxOverrideApply");
+
+                if (!form || !inpDate || !chkOn || !btn) return;
+                if (!debugOn) return;
+
+                form.classList.add("on");
+
+                const o = readFxOverride();
+                if (o.date) inpDate.value = o.date;
+                chkOn.checked = !!o.on;
+
+                btn.addEventListener("click", async () => {
+                    try {
+                        localStorage.setItem("mc_fx_override_date", inpDate.value || "");
+                        localStorage.setItem("mc_fx_override_on", chkOn.checked ? "1" : "0");
+                    } catch { }
+                    await evaluate();
+                });
+            };
+
+            return { evaluate, schedule, initDevControls };
+        })();
+
+        FX.initDevControls();
+        FX.evaluate();
+        FX.schedule();
+
+        // Close Yearly Effects
 
         function setThemeButtons(active) {
             document.querySelectorAll(".themeOption").forEach((b) => {
@@ -2060,7 +2884,6 @@
         }
 
         initFooterDock();
-
         initThemePicker();
 
         Promise.all([
