@@ -278,6 +278,51 @@ nav {
     }
 }
 
+@media (max-width: 640px) {
+    .topbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 14px;
+    }
+
+    nav {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 8px;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .pill {
+        padding: 8px 10px;
+        min-height: 32px;
+        font-size: 12px;
+    }
+
+    .avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 420px) {
+    .topbar {
+        padding: 8px 12px;
+    }
+
+    .pill {
+        padding: 7px 9px;
+        min-height: 30px;
+        font-size: 11px;
+    }
+}
+
 .panel {
     border: var(--border);
     background:
@@ -511,6 +556,8 @@ footer {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .links {

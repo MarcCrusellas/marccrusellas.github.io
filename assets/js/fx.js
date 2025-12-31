@@ -160,7 +160,7 @@ const FX = (() => {
         window.addEventListener("resize", resize, { passive: true });
 
         await loadScriptOnce(CONFETTI_SRC);
-        const conf = window.confetti?.create?.(canvas, { resize: true, useWorker: true });
+        const conf = window.confetti?.create?.(canvas, { resize: false, useWorker: false });
         confettiState.conf = conf || null;
         confettiState.cleanup = () => window.removeEventListener("resize", resize);
         return confettiState;
